@@ -1,3 +1,10 @@
+Movie Database APP
+
+API
+featured: "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=538c1b13429dd7c0a8f46ea856abe92b"
+images: "http://image.tmdb.org/t/p/w1280"
+search "https://api.themoviedb.org/3/search/movie/?&api_key=538c1b13429dd7c0a8f46ea856abe92b"
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,4 +75,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 # movies-db-app
