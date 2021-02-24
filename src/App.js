@@ -9,6 +9,7 @@ const search_api = "https://api.themoviedb.org/3/search/movie/?&api_key=538c1b13
 
 function App() {
     const [movies, setMovies] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(async () => {
       fetch(featured_api)
@@ -19,16 +20,42 @@ function App() {
       
     }, []);
 
+  const handleOnSubmit = (e) => { 
+      e.preventDefault();
+
+      if(searchTerm) {
+        fetch(search_api + searchTerm)
+        .then(res => res.json())
+        .then((data) => {
+          setMovies(data.results);
+        });
+        setSearchTerm('');
+    }
+  };
+
+  const handleOnChange = (e) => {
+      setSearchTerm(e.target.value);
+    };
+
   return (
-    <div className="movie-container">
+    <div>   
       <header>
-        <input type="text" placeholder="Search..."/>
+        <form onSubmit={handleOnSubmit}>
+          <input
+                className="search" 
+                type="search" 
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={handleOnChange}
+          />
+        </form>
       </header>
-      
-      {movies.length > 0 && movies.map((movie) => (
-          <Movie key={movie.id} {...movie} />
-      ))}    
+    <div className="movie-container">
+      {movies.length > 0 && 
+              movies.map((movie) => (
+          <Movie key={movie.id} {...movie} />))}
     </div>
+  </div>
   );  
 }
  
